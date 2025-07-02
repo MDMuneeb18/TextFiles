@@ -1,0 +1,166 @@
+Now we need to add plugins in pom.xml
+In pom.xml there are 2 types of entries
+1) Dependencies - download required dependency jar files for project
+2) Plugins - to compile and run the project
+once we add plugins we can run our project through pom.xml outside eclipse like cmd or any other. We have to install maven at os level now
+
+Inside eclipse we run our project through testng.xml file. But when we come out of eclipse to execute the test cases out of eclipse; in that case we use pom.xml. testng.xml we cannot run we cannot run directly outside of eclipse
+To run our project through pom.xml we add plugins in pom.xml
+2 types of plugins
+1) maven compiler plugin - compiling project and code
+2) maven surefire plugin - used for running our project
+after adding above plugins we are to run our project through pom.xml
+after adding plugins go to that pom.xml file and run as "Maven test". Hrom this we are able to run our project through maven in eclipse
+Maven is inbuilt software within eclipse.
+
+configure this path in environment variables "C:\Maven 3.9.9\apache-maven-3.9.9-bin\apache-maven-3.9.9\bin"
+open cmd execute "mvn - version"
+
+why we need to it install maven at os level?
+bcoz we are coming out of eclipse and running tests
+
+in cmd go to project location cd "C:\Users\2408342\eclipse-workspace\automationFramework"
+use "dir" to see all the project files
+use "mvn test" to run the project
+use "mvn clean test" to clean all the previous executions; when you execute a project unnecessary files will be created at backend and if we want to clean all those files use this command 
+now we are able to run our project outside eclipse
+
+we have done this manually. Now if we don't want to do this manually create a batch file 
+whatever commands you have executed in cmd write those commands in run.bat file.
+This is executable file. With single click everything will be executed
+So when we run this .b at file this itself will open the cmd; and command itself will go to project location and execute the pom.xml So all tjhis will be done by run.bat file
+We have created this file to just avoid the manual typing of commands in cmd. If we don't create the batch file we need to open the cmd manually; we need to go to project location; then we have to execute these things manually
+Just double click on that batch file
+
+If you want to execute multiple executable xml files then just include those files inside <suiteXmlFile> tag in pom.xml
+
+hierarchy :
+pom.xml  -->  testng.xml  -->  TestCases  -->  PageObject Classes
+					  -->  Utility Files
+					  -->  TestData files
+					  -->  any other configuration files
+
+After this maintenance part comes 
+maintenance is nothing but pushing our project into repositories and from there execution will start
+from here we are moving into CI(Continuous Integration) part
+version control system - we can maintain all the repositories in a repository
+local repository in an individual system. By using git software we will create local repo. At the end of the day what ever code they have created in their workspace they should commit their work in local repositories
+Once the changes rae done in local repositories they have to push their code in GitHub repository. Bco every one working on diff features but ultimately all of them belong to one single project. So everyone from their local repositories git repositories they will push their code in remote/global/common repository
+So in remote repository full code will be available
+
+Same is done by QA at the testing end and but they do the automation coding
+
+Jenkins will pull the latest code from GitHub on day to day basis once it has pulled the latest code it will run the automation within your jenkins
+So we have to take care about hot to commit our code; hot to push our code in remote repositories and how we can configure this github project inside jenkins
+
+to work with local repositories we need to have 2 tools 
+1) install git software - with this we can create local repo 	 
+2) create an account with github
+
+after installing check git --version in git cmd
+
+workflow of git and github :
+working directory (workspace like in eclipse) these are also called untracked files 
+	to add files from working directory to staging we use add command
+	-> we will add all working files to staging area this is done because
+
+Because suppose by mistake, if you added all the files to staging, we can recover those files andwe can still modify it okay. By mistake. If we added all the files to staging again, we can get back those changes and we can recover it. But once you committed your files into the local repository, still you have somehow a control. Still we can reset. But once you committed files into remote repository, you don't have a much control on this. Okay, so staging area we will have a full fledged control. So first we will add all the files from the working directory to staging area. So once the files are uh sent to the staging area we can call them as a tracked files.
+	
+	to add files from staging area to git repository we use commit command
+	-> and then we will commit to git repository
+ 	
+	to add files from git repository to remote repository we use another command called push command
+	-> and then we will push files to remote repository
+
+--------------------------------
+1) create local repository
+	git init - this will create new repository(initializing git)
+for one project we create only once. It will create virtual repository we can't see it
+when we create a local repo we have to provide user details toto this local repo. bcoz if we do some commit or push operations how we will know who is doing those actions?
+
+2) provide user info to git software (1 time job)
+	git config --global user.name "our name"
+	git config --global user.email "our email"
+this must be done once whenever we create a local repository
+
+and from here actual workflow starts
+
+3) adding files/folders to staging/indexing
+git status - it will show you untracked files
+git add -A     - this will add all folders and all files to staging
+git add fileName - adds that particular file only to git
+git add folderName - adds specific folder only 
+git add *.java  - this will add all .java files to git 
+
+green colour indicates the files are tracked
+
+from staging we have to commit hose changes in local repository
+
+4) commit the code into local(git) repository
+	git commit -m "msg to be displayed"
+white colour indicates all the files are added to local repository
+
+5) before pushing from local to remote repository we need to combine these 2; (establish a connection ); then we will be able to push it
+first create a remote repo in github; after creating repo it will generate one url copy it 
+that link will be used to link our local repo with remote repo
+
+git remote add origin "https://github.com/MDMuneeb18/AutomationFramework.git"
+
+6) now push the code into remote repository
+git push origin master
+
+it pushes all the files and folders in repository. This is first round of execution
+------------------------------------
+Now how to pull code from remote repo
+
+git pull "remote repo url"
+that project there in our system; as it is remote repo others will be adding files so to get those files we use this
+-----------------------------------
+clone repo
+suppose there is project already created and they have uploaded int github repo. Get clone the repo(get the repo into your local repo)
+
+git clone "url of repo"
+----------------------------------------------------
+GIT COMMANDS 
+vim index.txt 		-  creates file
+
+to see difference between in File Content between working directory and staging area 
+git diff index.txt
+
+last commit referred using HEAD
+git diff Head index.txt    	-  this will find difference between the file in last commit and index.txt file
+git diff --staged Head index.txt  - this will compare files in staged copy and last commit copies
+
+if we want to see difference between file in working directory and specific commit use below command
+git log --oneline 		- this will give id's of each commit with the commit message
+
+git diff commitId workingDirectoryFile
+
+if we want to see difference between file in specific commit and staging area copy use below command
+git diff --staged commitId
+
+if we want to see difference between specific commits
+fit diff commitId1 commitId2 index.txt
+
+if we want to see difference between 2 branches
+master
+test
+
+git diff master test
+
+if we want difference between local and remote repositories
+git diff master origin/master
+
+--------------------------------------------------------------------------------
+git rm - if we want to remove files from working directory or staging area
+
+reomve files from both working directory and staging area
+git rm index1.txt
+git rm -r  - this will remove all files from working directory and staging area
+
+remove files only from staging area
+git rm --cached file2.txt
+
+
+ls - command to see files in working directory
+git ls-files - command to see files in staging area

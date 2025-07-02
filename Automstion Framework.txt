@@ -1,0 +1,170 @@
+Automation Framework
+We can organize automation project files/folders in a structured manner
+Simply we can say organising files
+
+suppose we want to maintain test cases a seperate package for test cases and that package contains only test cases
+and suppose we want to maintains utility classes we create a seperate package and there we will maintain only utility classes and similarly so on
+
+The main objective of Automation Framework is to achieve the reusability concept and maintenance
+Main Objectives :
+1) Reusability		- If we create something we must be able to use it many times(utility files, Data Provider);
+			  And duplication must also be avoided
+2) Maintainability	- If we want to add/modify the test cases in the existing framework then we must be able to 			  do it without impacting other test cases or any other files in the project. And who ever 			  goes through the project they should be able to understand it easily
+3) Readability		- Everyone should be able to understand; read your code in that much simple way we need to 			  write in that simple way
+			  ex: Data Structures; Streams; Lambda Expressions etc:-
+The frameworks are categorised into 2 categories
+1) Built in Frameworks
+	Already available in the market
+	ex: TestNG; Junit; Cucumber(BDD style writing Behavorial Driven Development ) etc:-
+
+	different frameworks will support different languages. TestNG and Junit will fully support Java.
+	BDD with java then go with cucumber. We can install them as third party libraries and use them to write 	the automation scripts.
+	Only with built in frameworks we cannot achieve 100% of framework concept
+	( In built in framework if we add something features then it will become customized framework )
+2) Customized Framework(user-defined)
+	Here will write our own customized framework
+	ex:- Modular Framework; Data Driven; Keyword Driven; Hybrid Driven etc:-
+
+Hybrid framework - A hybrid framework is a type of software testing framework that combines features from two or more different types of testing frameworks to take advantage of their strengths.
+
+Before creating a framework there are certain stages like Different meetings will happen; Different tasks need to be performed before starting the project or framework
+
+Phases / Stages in automation Framework : 
+1) Analyzing Application Under Test(AUT)
+We have to analyse the screens; How many pages are there in the application and in each page what type of elements are there and how many elements are there; they created more customized elements or built in elements. So we need to understand the application in this prospective before automating the application. 
+This must be done because when we automate the application we will face some challenges. So before automating we can plan or research how to tackle/handle if we face issue with particular elements or pages in the application. Suppose if developer created new customized element then how to automate that element we can do some kind of research
+Main activities done here :
+	1) Number of Pages
+	2) What are all elements  / what type of elements are there / how to automate them
+	3) what to automate / what we cannot automate(by not seeing the application or test cases)
+
+2) Choose test cases for automation
+At the time when we recieve the build we won't do automation testing directly. First we do functional testing. After redeveloping the build 2-4 times then we do automation tetsing
+All the test cases can't be automated. Some need to be done manually
+What is 100% automation ?
+If we are able to automate evrything in the application then that means 100% automation. No it is not the right answer
+Let say there are 100 Test Cases. In that we are able to automate only 90 Test cases. And there are 10 Test Cases we cannot automate. In this if we are able to automate the 90 test cases completely then that is 100% automation. 
+So 100% automation means the test cases which are automatable must be tested fully with automation. So 90 test cases must be fully automated. 
+What ever test cases are automatable; if we are able to automate all the test cases then that is 100% automation
+When ever we create test cases we need to follow sme criterias
+When ever we create test cases we need to assign priorities to test cases
+1) Sanity Test Cases (Build Functionality Test) - P1 if these failed cannot proceed further. To test the rest of the test cases the sanity test cases should pass. So highest priority.
+2) Data Driven Test cases/ re-tests - P2 The test cases which require data to execute
+3) Regression Test Cases - P3
+4) Any other Cases - P4
+
+3) Design and Development of Framework
+Design means its a blueprint. We will assume the folder structure. Here we will maintain test cases; Here we will maintain utilities; Here we will Page Object Classes; Here we will maintain Data Files etc:-
+( Creating of framework comes under Designing Framework )
+Whereas Devloping framework is adding new utility files; adding more test cases; creating Page Object Classes etc:-
+
+4) Execution
+It happens in different ways depends on our requirements whether to execute all the test cases or few test cases
+Local Execution
+Where ever we have written our code there only we can execute our code. If for suppose we have wriitten our code in eclipse in eclipse itself we can execute our code
+Remote Execution
+Here we can push our code in some remote repositories and by taking that code we will execute our test in some other place(some other machine; some other place etc:-)
+
+Jenkins is a remote application. It is a CI tool. Jenkins will pull the code from Git repositories and execute it in remote machines
+
+5) Maintenance
+We will have the code in one common place.
+Let's say you have a team of 5 or 10 people. They're working on different things. There are different automated different test cases. And they created different page object classes. They created different test cases. They created different utility files because same thing cannot be done by multiple people. But ultimately, at the end of the day, everything is related to same project. Everything is belongs to one single project. So they have to integrate all of them and place it in one location. So that everybody is able to access it, everybody is able to pull it. Everybody is able to do modify. And where we have to maintain that is called repositories.
+We have local repository and we have remote repository concepts come into picture.
+So local repository means individually everyone is having their own local repositories. There they will maintain the code.
+And at the end of the day, they pushed their entire code into the common repository or remote repository or global repository.
+
+local repository - everyone will have their own test cases and their own developed codes written for development. And there they will maintain their all of those code
+Remote or Global repository - all the local repositories need to be stored at 1 common place so that it can be shared with all the people
+
+Email - Commerce (e-commerce) Domain(specific area) :
+If we buy anything from internet that comes under E-Commerce
+Internal features of many e-commerce applications are same. Like searching the product; adding to cart; tracking delivery status etc:-. These cannot be changed. If we know this domain we can work in any of the e-commerce application
+Online Shopping Applications
+2 operations for any type of Application :
+1) Frontend
+As a user what type of activities or actions we can do these come here.
+register account; login to the appn;search product; add or delete product in cart; order product; do payments; track delivery status of products; give reviews etc:-
+2) Backend
+Only administration people can access the backend operations
+maintains products information - how many products are there in the store only those many products must be displayed in the appn; Maintain user data; Ordered products information must be maintained; How manu orders delivered; How many orders on the  way to deliver
+
+https://tutorialsninja.com/demo/
+
+End-to-End Test : 
+Combining multiple test cases and doing one work flow is
+ex : suppose user registered in any appn - TC1;
+     the same must be reflected in admin page's customer details tab - TC2
+     And now go to DB and check whether that entry is there in DB or not - TC3
+Now combininig above TC1, TC2 and TC3 is end-to-end testing
+-------------------------------------------------------------------------------------------------------------
+Designing Framework :
+1) Create a Maven Project And add required dependencies
+Because we can easily add dependencies; update your project versions; we can also run our project in remote environments
+2) create a folder structure
+here we will create different packages and different folders in the project
+
+testBase package - testBase is basically required for test cases. So whatever the common methods are required for every test case, those common methods we will keep in separate class. That class we will create inside the testBase package.
+
+Development of hybrid driven framework
+1) Test Case : Account Registration
+create PageObject classes
+
+Test Data is of 2 types :
+1) Static Data
+Before executing a test case we will prepare our own data. That is static data that will never change.
+2) Dynamic Data
+we will create at runtime randomly
+To create random data we have to create our own user-defined method. There is no built in method
+-------------------------------------------------------------------------------------------------------------
+Logging - we can record all the events in form of text that is called logging process
+events are nothing but performing some actions on the application
+whenever user is performing some actions on the application in backend side log files will be generated
+1) Application Logs :
+main advantage of log files is whenever user is doing some unauthorised actions; in that particular case they can easily track the information and they can take immediate necessary steps(block or hold the account)
+Log file be used to track the information
+1) Automation Logs :
+In automation also we will maintain log files; because we can also log all the event from the application through test case, whatever actions we are doing on the application and every action we can log 
+Benefit of log file in automation : Suppose whenever our test case fails, that information is also part of log file. Sometimes developer will ask to provide the log file
+
+Different Log Levels (6)
+All < Trace < Debug < Info < Warn < Error < Fatal < Off
+Suppose if we set the log level as "All" - then we will get all types of logs
+Suppose if we set the log level as "Trace" - then we will get log levels below Trace
+Suppose if we set the log level as "Debug" - then we will get log levels below Debug
+Suppose if we set the log level as "Info" - then we will get log levels below Info
+Suppose if we set the log level as "Warn" - then we will get log levels below Warn
+Suppose if we set the log level as "Error" - then we will get log levels below Fatal
+
+Appenders - These describe where we want to generate log files 
+( console - here we generate log messages in console / file - here we generate logs in form of file )
+We always prepare file because we can easily download them and send it to development and this is available permanently. 
+But when we generate log messages in console the are only available at runtime and we need to copy all logs manually from console window we have to paste it in file and then we have to share it to developer. ANd these are not permanent. If we rerun the test case again the old logs will be removed
+These appenders will decide where to generate logs
+
+Loggers - These will decide what type of logs to generate, like which level of log we have to generate
+To generate logs for our test case we have 3 steps
+1) we need to have 1 configuration file "log4j2.xml" under src/test/resources
+in this file we have to specify appenders and loggers
+2) Update BaseClass and 
+3) add log statements to AccountRegistrationTest
+Here we will maintain log file with timestamp bcoz every time the entries will be logged in single log file.Then if the log file size exceeded it will maintain the old log file and create a new log file
+
+in info logs whatever msgs we write only those are displayed
+Each and every event we can log in the test case
+
+through log files we can easiky identify why our test case failed and where it failed
+old logs will also be maintained in multiple files
+the old file will be renamed with th timestamp
+
+-> Run tests on desired browser / Cross Browser / Parallel Browsing
+1) create testng file to run test cases and parameterize browser name and os to BaseClass setup method
+2) update BaseClass setup method 
+3) maintain seperate xm to run tests in multiple browsers parallely
+
+thread-count = 5;
+this means when we run multiple tests we need to accomodate multiple memory locations; so to execute multiple tests this thread-count will create 5 memory locations and at each location multiple each test case will be executed.
+So thread-count is helpful to execute multiple test-cases parallelly. So for that reason we put thread-count
+
+
+
