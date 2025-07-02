@@ -1,0 +1,103 @@
+hashmap iteration
+hashset iteration
+string
+abstraction
+
+investment calculation
+
+minimum no of rooms
+major methods available in string and character class
+String buffer, StringBuilder
+exceptions
+objects
+integer to string
+// type casting and upcasting
+
+array aggregate
+split a string
+assign character
+list remove based on string input
+listName.clear() - to empty the list
+
+reverse the list
+Collections.reverse(listName);
+Collections.sort(listName);
+check methods in arraylist
+Collections.sort(listName,Comparator.reverseOrder());// to sort it and print it in reverseOrder
+
+list.reversed();
+
+A = 1
+M = 13
+C = 3
+P = 15
+A+M = C+P
+how to store it in a HashMap using ASCII
+str = "AMCPt"
+char alpha = str.charAt(0);
+int alphaNum = alpha;//65
+-64
+
+String variable = String.valueOf(any datatype variable)
+String variable = String.valueOf(true)
+
+
+equality checking for character
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+      Scanner sc=new Scanner(System.in);
+      String str = "Hello World";
+      System.out.println("Character int the string at index 2 is : "+str.charAt(1));
+      System.out.println(str.concat(" Program"));
+      System.out.println("Index of Character 'e' in the string is "+str.indexOf('e'));//str.lastIndexOf('e') - returns last index of character e
+      System.out.println("Length of string : "+str.length());
+      System.out.println("To replace a Character in the string : "+str.replace(' ','-'));// replaceAll(String, String) : replace(char, char) -> both methods will replace all occurences
+      System.out.println("To retrieve the substring : "+str.substring(1,4));
+      
+      str = "          Hello World    ";
+      System.out.println("Strip Trailing ( REMOVES LAST SPACES OF STRING ) : "+str.stripTrailing());
+      System.out.println("Strip Leading ( REMOVES FIRST SPACES OF STRING ) : "+str.stripLeading());
+      System.out.println("Trim Method ( REMOVES FIRST AND LAST SPACES OF STRING ) : "+str.trim());
+      
+      System.out.println("To convert a character to string use 'char+\"\"': ");
+      String character = str.charAt(9)+"";
+      System.out.println(character);
+      
+      StringBuilder str1 = new StringBuilder(str);
+      System.out.println("Reversing a string using StringBuilder "+str1.reverse());
+      
+      System.out.println("Converting StringBuilder to String : \"sb.toString\""+str1.toString());
+      
+      char character1 = 'a';
+      System.out.println("To convert a character to upper case : "+Character.toUpperCase(character1));//only in print statement change occurs
+      char character2 = 'A';
+      System.out.println("To convert a character to lower case : "+Character.toLowerCase(character2));//only in print statement change occurs
+
+      String str3 = "hello";
+      String str4 = "hello";
+      
+      String str5 = new String("hello");
+      String str6 = new String("hello");
+      if( str3 == str4){
+        System.out.println("ONE");
+      }
+      if( str3.equals(str4) ){
+        System.out.println("TWO");
+      }
+      if( str5 == str6){
+        System.out.println("THREE");
+      }
+      if( str5.equals(str6) ){
+        System.out.println("FOUR");
+      }
+  }
+}
+StringBuilder 
+setCharAt(index, char) replaces the character at the specified index.
+sb.deleteCharAt(1); deletes character at particular index
+
+check how to convert integer to string
+check regular expressions

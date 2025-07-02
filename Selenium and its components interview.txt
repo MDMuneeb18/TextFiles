@@ -1,0 +1,347 @@
+Selenium and its components ?
+
+Selenium is a tool for automating web browsers. It lets you write code (in Java or other languages) to simulate user actions like clicking buttons, entering text, and checking page content.
+
+Main Components :
+1) Selenium WebDriver :
+Core tool to interact with browsers. Its an API that allows you to directly control web browsers.
+
+2) Selenium Grid :
+Selenium Grid is a testing tool that enables the execution of automated tests across multiple machines and browsers concurrently, significantly reducing testing time.
+Architecture (Hub-Node Model):
+Hub: The central server that receives test requests from your Java client. It distributes these requests to the appropriate Node.
+Nodes: The machines (physical or virtual) that register with the Hub. Each Node has browser drivers installed and runs the actual browser instances.
+
+3) Selenium IDE :
+Selenium IDE is an open-source tool within the Selenium that allows users to record, play back, and debug web application tests without needing to write code. It's designed as a user-friendly browser extension, making it accessible for both beginners and experienced testers to automate web interactions and build test cases for web applications.
+Selenium IDE is a browser extension (for Chrome and Firefox) that allows you to:
+Record your interactions with a web application (clicks, typing, navigation, etc.)
+Store those actions as test steps
+Replay them to automate testing
+Export the recorded tests to code (Java, Python, etc.)
+
+4) Selenium RC (Remote Control) is an older tool in the Selenium suite that allowed you to write automated web tests in any programming language and run them in any browser. It doesn't make direct calls with the web browser. there will be an intermediate server. where as webdriver makes direct calls with browser
+---------------------------------------------------------------------------------------------------------------
+Selenium webdriver?
+
+Selenium WebDriver is a tool that enables you to automate web browser actions using code. It acts like a robot user that can open websites, fill details, click buttons, check content just like a real person does.
+
+WebDriver used for providing the connection between browser and local system
+It acts as a bridge
+
+It supports chrome, edge, firefox, safari
+supports multiple languages - java, python, C# etc:-
+works with testing frameworks like JUnit, TestNG in java
+it can simulate real user actions like click, type, scroll
+
+How it works :
+Set up a webdriver
+create a webdriver object
+use methods like get(); findElement(); click(); sendKeys(); getTitle(); getText() etc:-
+
+WebDriver is a main interface to control browser
+By used to locate elements
+WebElement represents an element on the page
+---------------------------------------------------------------------------------------------------------------
+Browsers supported by selenium?
+Selenium supports almost all the web browsers 
+ChromeDriver
+EdgeDriver
+FirefoxDriver
+SafariDriver - works in macOS only
+OperaDriver
+---------------------------------------------------------------------------------------------------------------
+Headless Browser Testing
+Headless browser testing means running browser automation without opening any physical/visible window
+
+We use Headless Browser Testing because 
+to reduce execution time
+to save resources
+works on servers without a display
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class HeadlessTest {
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+
+        // Set Chrome to headless mode
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless"); // Run in headless mode
+
+        WebDriver driver = new ChromeDriver(options);
+
+        driver.get("https://example.com");
+        System.out.println("Page title is: " + driver.getTitle());
+
+        driver.quit();
+    }
+}
+------------------------------------------------------------------------------------------------------------Selenium Grid vs WebDriver
+Selenium WebDriver automates browser actions only on single machine
+Ideal for local testing
+We are able to run tests on our chrome browser installed in laptop
+
+Selenium Grid automates browser actions multiple devices concurrently
+(Allows distributed and parallel testing across multiple machines and browsers.)
+Ideal for cross-browser tetsing and scaling testing
+We run tests on Chrome, Firefox, and Edge across different machines at the same time.
+Cross-browser testing is the process of testing a web application across multiple web browsers to ensure it works consistently and correctly for all users.
+
+Feature		Selenium WebDriver		Selenium Grid
+Scope		Single machine/browser		Multiple machines/browsers
+Speed		Slower (one test at a time)	Faster (parallel execution)
+SetupComplexity Simple				More complex (requires hub & nodes)
+Use Case	Local testing			Cross-browser, cross-platform testing
+------------------------------------------------------------------------------------------------------------
+Desired capabilities?
+Desired Capabilities is a class in Selenium that allows you to set properties for browsers to perform cross-browser testing of web applications before launching it. It helps us to customize browser behaviour during test execution.
+
+Set browser name, version, platform
+Enable/disable browser features
+Use with Selenium Grid to specify browser on remote machines
+Combine with ChromeOptions or FirefoxOptions
+
+DesiredCapabilities capabilities = new DesiredCapabilities();
+//Think of it as a way to tell Selenium: “I want to run my test on this kind of browser and platform.”
+capabilities.setBrowserName("chrome");
+//Selenium will look for a Chrome browser to run the test.
+capabilities.setPlatform(Platform.WINDOWS);
+//This sets the operating system to Windows.
+WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+------------------------------------------------------------------------------------------------------------
+How to handle ssl certificates ?        
+SSL stands for Secure Sockets Layer, and its successor is TLS (Transport Layer Security). Most people still use "SSL" as a general term for this technology, even though TLS is the more modern and secure version.
+
+In simple terms, an SSL/TLS certificate is a digital certificate that authenticates the identity of a website (or server) and encrypts the information sent between your web browser (client) and the website's server
+an SSL/TLS certificate ensures two things:
+Trust: You are talking to the right website.
+Security: Your conversation with that website is private and protected.
+
+When your Selenium tests encounter a website with an SSL certificate warning, the browser might block the navigation, leading to test failures. You need to configure Selenium WebDriver to accept these "insecure" connections.
+------------------------------------------------------------------------------------------------------------
+WebDriverManager ?             
+WebDriverManager is a java library that helps you automatically manage browser drivers for selenium tests and keep it up to date
+
+Without WebDriverManager:
+You have to manually download browser drivers.
+You need to set the path using System.setProperty().
+
+With WebDriverManager:
+It automatically downloads the correct driver version.
+No need to set driver paths manually.
+Keeps drivers up to date and compatible with your browser.
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class WebDriverManagerExample {
+    public static void main(String[] args) {
+        // Automatically setup ChromeDriver
+        WebDriverManager.chromedriver().setup();
+
+        // Launch Chrome browser
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://example.com");
+        System.out.println("Title: " + driver.getTitle());
+
+        driver.quit();
+    }
+}
+
+---------------------------------------------------------------------------------------------------------
+What is mean by System.setProperty?
+System is a class and setProperty is a method which accepts 2 arguments i.e key and path
+Key represents in which browser we are going to test the application
+path defines the location of driver executable file.
+It is used to set the class and path location of driver.
+------------------------------------------------------------------------------------------------------------
+xpath is one of the locator available in selenium.  It is a syntax for finding any element on the web page using XML path expression
+ for validating the locator
+when id, classname, name is not present we go for xpath
+------------------------------------------------------------------------------------------------------------
+difference between \ and \\
+\
+it means absolute xpath
+it used to find path from root element<html> tagname to desired webelement tag name
+\\
+it means relative xpath
+it used to find path from desired WebElement's tagname only
+------------------------------------------------------------------------------------------------------------
+difference between xpath and cssSelector
+xpath syntax complex compared to cssSelector
+can traverse both forward and backward
+xpath becomes inconsistent in some browsers
+
+cssSelector syntax is simple compared to xpath
+can traverse only in forward direction
+------------------------------------------------------------------------------------------------------------
+click operation using js executor
+JavaScriptExecutor is an interface that helps to execute JavaScript through selenium webdriver
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class JavaScriptClickExample {
+    public static void main(String[] args) {
+        // Set path to ChromeDriver
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+
+        // Launch Chrome browser
+        WebDriver driver = new ChromeDriver();
+
+        // Maximize window
+        driver.manage().window().maximize();
+
+        // Open a sample website
+        driver.get("https://example.com");
+
+        // Locate the element you want to click
+        WebElement element = driver.findElement(By.id("someButtonId")); // Replace with actual ID
+
+        // Use JavaScriptExecutor to click the element
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", element);
+
+        // Close browser
+        driver.quit();
+    }
+}
+------------------------------------------------------------------------------------------------------------
+Action classes in Selenium are part of the org.openqa.selenium.interactions.Actions class. They are used to perform complex user interactions like:
+
+what is the use of the Actions class?
+Actions class is used to perform mouse operations such as mouse hover action, drag and
+drop, double click and
+right click operations
+This class will contain more methods for performing each of the mouse actions.
+
+Mouse movements
+Clicks
+Drag and drop
+Keyboard actions
+Hovering
+Right-clicking
+Double-clicking
+
+Actions actions = new Actions(driver);
+You can then chain methods like .click(), .moveToElement(), .sendKeys(), etc., and finish with .perform() to execute the action.
+
+.click()
+WebElement element = driver.findElement(By.id("btn"));
+Actions actions = new Actions(driver);
+actions.click(element).perform();
+
+.doubleCLick()
+WebElement element = driver.findElement(By.id("doubleClickBtn"));
+actions.doubleClick(element).perform();
+
+.contextClick()
+Right-click on an element.
+WebElement element = driver.findElement(By.id("rightClickBtn"));
+actions.contextClick(element).perform();
+
+.moveToElement() - move the cursor to the particular element
+WebElement menu = driver.findElement(By.id("menu"));
+actions.moveToElement(menu).perform();
+
+WebElement source = driver.findElement(By.id("drag"));
+WebElement target = driver.findElement(By.id("drop"));
+actions.dragAndDrop(source, target).perform();
+
+WebElement element = driver.findElement(By.id("hold"));
+actions.clickAndHold(element).perform();
+
+actions.release().perform();
+
+WebElement input = driver.findElement(By.id("textBox"));
+actions.sendKeys(input, "Hello World").perform();
+
+
+In Selenium's Actions class, .build() is used to compile a chain of actions into a single executable sequence before performing it.
+
+Actions actions = new Actions(driver);
+actions.moveToElement(element)
+       .click()
+       .sendKeys("Hello")
+       .build()
+       .perform();
+
+moveToElement(), click(), and sendKeys() are chained.
+.build() compiles them into a single action.
+.perform() executes the entire sequence.
+------------------------------------------------------------------------------------------
+Why we use .perform()
+In Selenium, .perform() is a method used with the Actions class to execute the sequence of user interactions that you've defined.
+------------------------------------------------------------------------------------------
+moveToElement() will move to that particular element
+switchTo() can be used to move control to an alert, frame or window
+------------------------------------------------------------------------------------------
+What are types of actions
+1) Mouse Actions
+2) Keyboard Actions
+3) Composite Actions
+4) Scrolling Actions
+------------------------------------------------------------------------------------------
+Robot class used for keyboard operations
+It is available in java.awt package
+it is used to simulate low level keyboard operations
+------------------------------------------------------------------------------------------
+WebElement
+In Selenium, a WebElement represents an HTML element on a web page. It is the core object used to interact with elements like buttons, text fields, checkboxes, links, etc.
+------------------------------------------------------------------------------------------
+How to locate elements in Selenium ?
+we can locate elements on a web page using different locators using id , tagname, class name, xpath, cssselector
+------------------------------------------------------------------------------------------
+what is By class
+By is a class in the org.openqa.selenium package that provides static methods to create locator objects. These locators are then passed to methods like findElement() or findElements() to locate web elements.
+-------------------------------------------------------------------------------------------
+in selenium java waots are used to handle synchronization issues
+synchronization is a mechanism that ensures that only 1 thread can access a resource at a given time
+
+Implicit Wait
+Implicit wait tells WebDriver to wait for a certain amount of time before throwing a NoSuchElementException. It applies globally to all elements.
+
+waits for whole page too load for whole page
+
+WebDriver driver = new ChromeDriver();
+driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+Explicit Wait in Selenium - wait for specific wait until condition met else throws ElementNotVisibleException.
+it will be checking for every 500ms
+any element should be enabled explicitly waiting for particular element
+
+The Explicit Wait in Selenium is used to tell the Web Driver to wait for certain conditions (Expected Conditions) or maximum time exceeded before throwing “ElementNotVisibleException” exception.
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("myElement")));
+
+Selenium will check repeatedly (every 500 milliseconds by default) to see if the condition is met.
+If the element becomes visible after, say, 2 seconds, it will proceed immediately without waiting the full 10 seconds.
+If the condition is not met within 10 seconds, it will throw a TimeoutException.
+
+Fluent Wait - it is type of explicit wait, and it ignores some exception that are defined in code and moves further with the code
+
+comes and check whether element is enabled or clickable for evry 2 seconds and also ignores exception
+
+The Fluent Wait in Selenium is used to define maximum time for the web driver to wait for a condition, as well as the frequency with which we want to check the condition before throwing an “ElementNotVisibleException” exception.
+
+Wait wait = new FluentWait(WebDriver reference)
+.withTimeout(timeout, SECONDS)
+.pollingEvery(timeout, SECONDS)
+.ignoring(Exception.class);
+---------------------------------------------------------------------------------------
+1. driver.get(String url)
+Purpose: Opens a URL in the browser.
+Behavior: Waits until the page is fully loaded.
+
+driver.navigate().to(String url)
+Purpose: Also opens a URL, but is part of the Navigation interface.
+Behavior: Similar to get(), but allows more control over browser history.
+

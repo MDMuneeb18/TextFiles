@@ -1,0 +1,83 @@
+string -> find character -> replace all occurences of it in a string - 
+character present or not present in string(use contains (ch+"").contains()) ->
+replace first occurence of a string
+-----------------------------------
+s="ABCD"( divide half and check )
+A+B = C+D(check)
+1+2 = 3+4
+ 3 <> 7
+MOVIE ( IGNORE 'V' ) STRING LENGTH MIN 2, should not contain special char or numbers or numbers 
+s.matches("[a-zA-Z]+"); inputs are in lower case
+M+O = I+E
+-----------------------------------
+EVCharging
+-----------------------------------
+4 class - inheritance
+service - parent
+no edit
+
+restaurant, deliveryPartner - 2 child class
+restaurant extends service
+create 6 parameter constructor 2 here, 4 in present in parent
+calculate order cost method; double return discount for some range; tax amount to be added
+
+deliveryPartner extends service
+create 6 parameter constructor 2 here, 4 in present in parent
+delivery charge to be calculated based on range
+
+1 user interface
+no edit
+-----------------------------------
+something consultancy ( HashMap )
+
+university class
+create method to add to hashmap takes 2-parameters
+create filter method returns double( to be written )
+
+
+userinterface 
+no edit
+-----------------------------------
+Styling( HashSet ) - similar to IOT device question
+
+***cloth details seperated by colon
+hoodie - large: quantity parameter :100 ( splitting based on ":" )
+while returning set it must contain (hoodie - large,...) (this fashion)
+
+add method to be written
+-----------------------------------
+
+
+
+//tagname[@attributeName='value']
+//attributeName = name,id etc:-
+//tagname can be written * also
+
+//*[@input='traveldate']
+
+//*[text()='Booking Details']
+
+//*([contains(text(),'Booking')])[2] (in js indexing starts from 1)
+
+cssSelector
+tagname[id='idName']
+button[id='submit']
+
+
+/html/body/div[2]/form/table/tbody/tr[1]/td[2]/input
+
+
+
+
+
+
+Unequal Experiences
+
+
+
+
+
+
+
+
+

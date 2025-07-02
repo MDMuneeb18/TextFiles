@@ -1,0 +1,76 @@
+verification validation
+smoke 
+To verify that the basic and critical functionalities of the application work after a new build.
+To check if the absolute most basic and critical parts of the building are standing and functional. Is the foundation stable? Are the main walls up? Does the roof seem to be in place?	
+sanity 
+ Sanity testing is a testing technique that is used to check that specific functionality or components of a software application are working as expected after making changes or fixing defects. The main objective of sanity testing is to verify that the changes made to the application have not introduced new defects or issues in the specific functionality or components.
+Regression Testing, on the other hand, involves re-running previously executed tests on the entire software application to ensure that recent changes have not adversely affected existing functionalities
+ It is more comprehensive and often automated to cover a wide range of scenarios and edge cases
+
+
+severity what particular impact that issue have on clients business
+Critical
+High
+Moderate
+Low
+priority how quickly we should solve that issue
+Immediate
+				severity     priority
+not able to login 		critical     Immediate
+not able to register		High	     
+not able to place order		critical     Immediate
+not able to search product	Critical     Immediate     
+
+
+Requirement Analysis
+Test Planning
+Test Case Design, RTM(to analyse all the requirements)
+Test Case Executuion
+Defect/Bug cycle  - new, assign , open, fix, retest, (if pass verify, close), (else reopen),
+-----------------------------------------------------------------------------------------------
+requirement analysis - what to be tested
+The activities that take place during the Requirement Analysis stage include:
+
+Reviewing the software requirements document (SRD) and other related documents
+Interviewing stakeholders to gather additional information
+Identifying any ambiguities or inconsistencies in the requirements
+Identifying any missing or incomplete requirements
+Identifying any potential risks or issues that may impact the testing process
+by qa team
+RTM created here to map requirements to test cases 
+ 
+test planning - It is the most efficient phase of the software testing life cycle where all testing plans are defined. In this phase manager of the testing team calculates the estimated effort and cost for the testing work. This phase gets started once the requirement-gathering phase is completed.
+Developing a test strategy: selecting the testing methods and techniques that will be used
+Identifying the testing environment and resources needed
+Identifying the test cases that will be executed and the test data that will be used
+Identifying the test deliverables and milestones
+Assigning roles and responsibilities to the testing team
+Reviewing and approving the test plan
+
+Test Case Development - The Test Case Development phase gets started once the test planning phase is completed. In this phase testing team notes down the detailed test cases. The testing team also prepares the required test data for the testing. When the test cases are prepared then they are reviewed by the quality assurance team.
+Identifying the test cases that will be developed
+Writing test cases that are clear, concise, and easy to understand
+Creating test data and test scenarios that will be used in the test cases
+Identifying the expected results for each test case
+Reviewing and validating the test cases
+Updating the requirement traceability matrix (RTM) to map requirements to test cases
+
+Test Environment Setup
+Test Environment Setup is an important part of the STLC. Basically, the test environment decides the conditions on which software is tested. This is independent activity and can be started along with test case development. In this process, the testing team is not involved. either the developer or the customer creates the testing environment.
+
+Test Execution
+In Test Execution, after the test case development and test environment setup test execution phase gets started. In this phase testing team starts executing test cases based on prepared test cases in the earlier step.
+
+The activities that take place during the test execution stage of the Software Testing Life Cycle (STLC) include:
+
+Test execution: The test cases and scripts created in the test design stage are run against the software application to identify any defects or issues.
+Defect logging: Any defects or issues that are found during test execution are logged in a defect tracking system, along with details such as the severity, priority, and description of the issue.
+Test data preparation: Test data is prepared and loaded into the system for test execution
+Test environment setup: The necessary hardware, software, and network configurations are set up for test execution
+Test execution: The test cases and scripts are run, and the results are collected and analyzed.
+Test result analysis: The results of the test execution are analyzed to determine the software's performance and identify any defects or issues.
+Defect retesting: Any defects that are identified during test execution are retested to ensure that they have been fixed correctly.
+Test Reporting: Test results are documented and reported to the relevant stakeholders.
+It is important to note that test execution is an iterative process
+
+bug/defect life cycle

@@ -1,0 +1,709 @@
+-> Class :
+	Class is a blueprint or template for creating objects
+	Class defines the characteristics and behaviors that all objects created from it will have.
+	Classs is also defined as the template that describes the data and behaviour  associated with class 	instantiation
+	Class defines structure and behaviour
+
+-> Object :
+	ex :
+	Class is a blueprint of house
+	Object is the actual house built from that blueprint
+	
+	Object is an instance of class. It encapsuates data and behaviour into a single entity
+	Student s1 = new Student();
+	here "new" keyword creates a space for object "s1" in Heap Memory.
+
+-> Constructor :
+	A constructor is a block of code that runs when a new object is created, and it sets up the initial state 	of the object.
+	The 3 main properties of constructors :
+	1) Constructor name is same as class name
+	2) Constructors do not have a return type
+	3) For one object constructor can be called only once but objects can call methods any no of times
+
+	3 types of constructors :
+
+	1) Non-Parameterised Constructors :
+	In this type of constructors; the constructors does not contain any parameters
+	ex :
+	public Student(){
+		System.out.println("Constructor Called");
+	}
+	When we does not write non-parameterised constructors; Java creates this non parameterised constructors 	by default.
+	
+	2) Parameterised Constructors :
+	This type of constructor requires parameters to set initial values for an objects attributes(variables)
+	We use this constructor to overcome setting of values of attributes(variables) manually after object 	creation
+
+	3) Copy Constructors :
+	Copy Constructor is a special type of parameterised constructor that takes an object of the same class as 	an argument(parameter) to create a new object by copying the state from an existing object.
+
+	The main purpose of copy constructors is to create an exact duplicate object of the existing object
+
+	obj2 = obj1;
+	the above command does not create the copy of the object. Instead it wll make refer both the objects to 	same object in the memory.
+	
+	public Student(Student s){
+		this.name = s.name;
+		this.age = s.age;
+	}
+	psvm(String[] args){
+		Student s1 = new Student();
+		s1.name="Muneeb";
+		s1.age = 22;
+		Student s2 = new Student(s1);
+	}
+
+If any of the parameterised constructor created the default constructor is not created by default. If we want default constructor when parameterised constructors created then we need to create the default constructors.
+
+-> "this" keyword is a reference to the current object
+method signature - no of parameters + data type of parametrs
+-> Polymorphism
+	Ploymorphism means many forms in java. It allows one object to behave in different ways depending on the 	context
+
+	2 Types of Polymorphism : 
+	
+	1) Compile Time Polymorphism ( Method Overloading / static polymorphism / early binding ) :
+	This happens when multiple methods in the same class have same name but different parameters/different 	functioning
+	This type of polymorphism is also known as static polymorphism or early binding because the decision about  	which method to be called is made by compiler at compile time.
+
+	2) Runtime Polymorphism ( Method Overriding / dynamic polymorphism / late binding ) :( is-a relationship )
+	"Maruti is a Car"
+	This happens when a subclass has its own implementation of a method that is already present in the parent 	class.
+	This type of polymorphism is also known as dynamic polymorphism or late binding because the decision about 	which method to be called is made by JVM at runtime but not at compile time.
+	Upcasting: A common scenario involves assigning a subclass object to a superclass reference variable 	ex:- 
+	Animal myDog = new Dog()
+	
+	Benefits of Polymorphism : 
+	Code Reusability
+
+	private methods cannot be overridden
+	static methods belong to the class not to the object. So they are hidden not overriden
+	final methods cannot be overridden
+	
+
+-> Inheritance
+	Inheritance allows a class to inherit properties(fields/attributes) and behaviours(methods) from another 	class.
+	extends keyword is used to establish inheritance relationship. extends keyword can only inherit one class 	at a time
+	It helps in code reuse / method overriding / establishing parent-child relationship.
+	superclass(parent class) - the class whose members are inherited
+	subclass(child class) - the class that inherits from super class using extends keyword
+
+	4 types of inheritance :
+
+	1) Single Level Inheritance :
+	Here one subclass inherits from one superclass
+	Base Class ------> Derived Class
+
+	2) Multilevel Inheritance :
+	A class inherits from a class which itself inherits from another class
+	Base Class ------> Derived Class ------> Derived Class
+
+	3) Hierarchial Inheritance :
+	Single parent class but multiple child classes
+	Multiple subclasses inherit from one superclass
+		Base Class
+		    -
+		-       -
+	     -              -
+     Derived Class     Derived Class
+
+	4) Hybrid Inheritance :
+	Combination of more than 1 inheritance
+	In below we can see combination of single level inheritance and multilevel inheritance
+
+		Base Class
+		    -
+		-       -
+	     -              -
+     Derived Class     Derived Class
+	    -
+	- 
+Derived Class
+	
+	There is also another type of inheritance called multiple inheritance means a single class inherits from 	more than one class. This cannot be achieved by Java as it does not support multiple inheritance with 	classes(due to 	diamond problem). But java supports multiple inheritance with interfaces.
+
+	final classes cannot be inherrited
+	private members are not inherited	
+
+-> Packages :
+	A package is a namespace that contains a set of classes and interfaces
+
+	2 Types
+	1) Builtin Packages :
+	Provided by Java (e.g., java.util, java.io, java.lang)
+
+	2) User Defined Packages :
+	Created by developers to organize their own classes.
+
+-> Access Modifiers :
+	Access Modifiers define the scope of classes, variables, methods. These are essential for encapsulation 	that restricts direct access to some of the components. They decide which parts of our code can access or 	modify other parts.
+
+	1) public :
+	It is accessible through whole class and also accessible in different packages
+
+	2) protected :
+	It is accessed by any class in that package and if we want to access that protected type in other packages 	it is accessed by subclasses only.
+
+	3) default :
+	If we do not specify anything infront of a variable, method, class it is of default type. It is accessible 	in the package but not outside the package.
+
+	4) private :
+	These are not accessible outside the class; accessible only in that class.
+	There is way to access privables using public getters and setters methods.
+
+-> Encapsulation :
+	It is the process of hiding the internal details of a class and only exposing what is necessary through 	methods.
+	It is like putting data and code that works on that data inside a box and controlling access to it
+	We can achieve encapsulation by making the fields private; and using getters and setters methods to access 	and update the values.
+
+	Encapsulation means hiding the details of how something works and only showing what is necessary.
+	In Java, it means keeping data safe by making variables private and using public methods to access or 	change them.
+
+-> Abstraction :
+	Showing only essential features of an object or process and hiding complex implementation details
+	It's about designing classes and systems in terms of what they do rather than how they do it.
+	Focus on "WHAT" not "HOW"
+	Ex:-
+	Think of a car:
+	You use the steering wheel, accelerator, and brakes.
+	You don’t need to know how the engine works or how fuel is burned.
+
+	abstract methods will only be in abstract class
+	for suppose "Animal" class is abstract and "Dog" class is extending "Animal" class
+	We can instantiate like this Animal a = new Dog();
+	But we can't instantiate like this Animal a = new Animal();
+	for suppose "Animal" is a interface and "Dog" class is extending "Animal" class
+	We can instantiate like this Animal a = new Dog();
+	But we can't instantiate like this Animal a = new Animal();
+	abstract  classes cannot be instantiated directly with abstract class
+
+	which ever class is extending the abstract class it must contain the implementation for that particular 	abstract methods.
+	If a class is inheriting the abstract class and it is not able implement all the abstract methods; then 	the child class inheriting the abstract class also becomes abstract class
+	abstract classes can have both abstract methods as well as implemented methods
+	abstract classes can have constructors even tough the objects of the abstract classes can't be 	instantiated. This is because when a concrete child class inherits abstract class the super class's 	constructor must be called during object creation process. This allows abstract class to initialize it's 	own instance variables that will be inherited by it's subclasses
+
+	Abstraction using interfaces : 
+	An interface in Java is a blueprint for a class. It defines a set of abstract methods (methods without a 	implementation) that any class implementing the interface must provide.
+	interfaces will have pure abstraction
+	interfaces doesn't contain constructors and methods with implementation
+	interfaces are public, static, final by default
+	
+	Multiple Inheritance :
+	This type of inheritance cannot be achieved by classes but this can be achieved by interfaces using 	implements keyword
+  Base class		Base class
+     -			   -
+	-		-
+	   -        -
+       	 Derived Class
+
+	 You can now provide a default implementation for methods in an interface using the default keyword.
+	 Interfaces can also have static implemented methods.
+public interface Switchable {
+    // Methods are implicitly public abstract
+    void turnOn();
+    void turnOff();
+
+    // Constant (implicitly public static final)
+    String POWER_SOURCE = "Electricity";
+
+    // Default method (Java 8+)
+    default void checkStatus() {
+        System.out.println("Checking device status...");
+    }
+
+    // Static method (Java 8+)
+    static void displayInterfaceName() {
+        System.out.println("This is the Switchable interface.");
+    }
+}
+
+-> Encapsulation is hiding internal data of a class
+   Where as abstraction is hiding the internal working or logic 
+
+-> static keyword :
+	non-access modifier	
+	static is thing that is accessible to everyone but not like public
+	When a member (field or method) is declared static in Java, it means it belongs to the class itself, 	rather than to any specific instance (object) of that class. This means there's only one copy of that 	member, shared by all objects of the class, or accessible even if no objects of the class have been 	created.
+	if an attribute declared as static it is static/class variable
+	it belongs to particular class, not to any particular object created from that class
+	You can just use ClassName.staticMember from anywhere within the code where ClassName is visible.
+	static block runs once when the class is loaded
+	static class refers to static nested class. You cannot declare a top level class as static. 
+	When we see static applied to a class; it means it's a class defined inside another class and it behaves 	like static member of that outer class.
+
+-> super :
+	super keyword is used in inheritance to refer to members of parent class from a child class.
+	
+	1. Accessing Superclass Variables
+	If a subclass has a variable with the same name as one in the superclass, super helps access the 	superclass version.
+	class Animal {
+	    String name = "Animal";
+	}
+	class Dog extends Animal {
+	    String name = "Dog";
+	    void printNames() {
+        	System.out.println(name);        // Dog
+	        System.out.println(super.name);  // Animal
+	    }
+	}
+
+	2. Calling Superclass Methods
+	If a method is overridden in the subclass, super can be used to call the original method from the 	superclass.
+	class Animal {
+	    void sound() {
+	        System.out.println("Animal makes a sound");
+	    }
+	}
+	class Dog extends Animal {
+	    void sound() {
+	        super.sound();  // Calls Animal's sound()
+	        System.out.println("Dog barks");
+	    }
+	}
+
+	3. Calling Superclass Constructor
+	Calling a superclass constructor refers to the use of the super() keyword within a subclass constructor to 	invoke a constructor of its immediate superclass, allowing the subclass to inherit and initialize the 	state defined in the superclass before executing its own constructor logic.
+	class Animal {
+	    Animal(String type) {
+        	System.out.println("Animal is a " + type);
+	    }
+	}
+	class Dog extends Animal {
+	    Dog() {
+	        super("Dog");  // Calls Animal's constructor
+	        System.out.println("Dog constructor called");
+	    }
+	}
+
+	super.variable  -  Access superclass variable
+	super.method()  -  Call superclass method
+	super()	Call    -  superclass constructor
+
+-> final keyword :
+	final keyword is used to restrict modification. It can be applied to variables, methods, and classes, and 	its meaning changes slightly depending on where it's used.
+
+	A variable declared as final cannot be changed after it is initialized. It is like constant.
+	A method declared as final cannot be overridden by subclasses.
+	A class declared as final cannot be extended. No subclass can inherit it.
+
+-> Constructor Chaining :
+	Constructor chaining is the process of calling one constructor from another constructor within the same 	class, or calling a superclass's constructor from a subclass's constructor. 
+
+	1. Within the Same Class
+	Use this() to call another constructor in the same class.
+	class Car {
+	    Car() {
+	        this("Honda");  // Calls the constructor with a String parameter
+	        System.out.println("Default constructor");
+	    }
+	    Car(String brand) {
+        	System.out.println("Car brand: " + brand);
+	    }
+	}
+	
+	2. Between Superclass and Subclass
+	Use super() to call a constructor from the superclass.
+
+-> Functional Interface :
+	A functional interface in Java is an interface that contains exactly one abstract method. It can have 	default or static methods, but only one abstract method is allowed. Functional interfaces are used 	primarily with lambda expressions and method references.
+	That abstract method can be implemented using lambda expressions
+
+-> compiling - process of converting a source code(.java files) written in a high level language into a machine 	code(machine readable format ) called byte code so that the computer can understand
+	converting ".java" file to ".class" file
+
+-> The Java Virtual Machine (JVM) on each platform interprets or compiles the bytecode into native machine code for that specific operating system and hardware.
+
+->  Collection (Interface):
+Definition: Collection is a root interface in the Java Collections Framework (part of java.util package). It represents a group of objects, known as elements.
+ It provides the foundation for more specific collection types like List, Set, and Queue.
+Examples of Implementations:
+ArrayList, LinkedList, HashSet, TreeSet, PriorityQueue, 
+
+Collections (Utility Class):
+Definition: Collections is a utility class in the java.util package that provides static methods to operate on or return collections.
+
+-> The JVM's primary role is to execute Java bytecode. When you compile your Java source code (.java files) using the Java compiler (javac), it gets translated into platform-independent bytecode (.class files). The JVM then takes this bytecode and translates it into machine-specific instructions that the underlying operating system (Windows, macOS, Linux) and hardware can understand and run.
+
+The Java Runtime Environment (JRE) is a package or a bundle of software components that provides the necessary environment to run Java applications. It contains built in classes
+Purpose: If you only want to run Java programs (and not develop them), then the JRE is all you need. It contains everything required for a JVM to execute Java bytecode.
+
+The Java Development Kit (JDK) is a complete software development kit (SDK) that provides everything you need to write, compile, debug, and run Java applications.
+
+-> Primitive DataTypes : 
+These are the most basic data types built into the language. They store simple values and are not objects.
+byte, short, long, int, char, double, float, boolean
+These are stored in stack memory. These cannot be null
+
+Non-Primitive(Reference Data Types):
+These are more complex data types that refer to objects. These are created with help of primitive data types
+They include strings, arrays, classes, interfaces, collections
+
+-> wrapper classe are used to convert primitive data types into objects
+
+-> Wrapper classes
+bcoz of primitive data types java is not pure oop language
+when we use objects for storing data memory usage increases and performance decreases.
+for this primitive data types are introduced
+In collections framework it doesn't support primitive data types to store. Then how to store these primitive data types into those? to overcome this problem java introduced WRAPPER CLASSES concept. This wrapper class wrap the primitive data types with some class into an object. 
+For collections framework we need objects. So to create objects we need class. So java wrapped up these primitive data types into class. That wrapped class is wrapper class. 
+
+Wrapper class is a class which wraps the primitive type of data
+
+for every primitive data type there is a wrapper class. In wrapper class every data type starts with capital letter
+Byte, Integer, Boolean, Double, FloatLong, Character, Short
+In wrapper classes there is no non-parameterised constructors
+Integer i = new Integer(55);//Boxing - we are wrapping primitive data type here
+(bringing primitive data type and putting it in a box called wrapper class)
+Integer i = 55;//autoboxing - java wraps a class around this primitive data type internally
+Integer i = Integer.valueOf(55);//boxing
+//above concept is applicable for all primitive datat  types
+sop(i);
+
+//Unboxing - bringing the primitive datatype out of wrapper class is called unboxing
+int i3 = i.intValue();//this takes primitive data from wrapper class
+int i3 = i; //auto-unboxing java internally brings primitive data type from wrapper class and assign it here
+
+We must use wrapper classes only in collections
+Integer.parseInt() - returns primtive data type
+Integer.valueOf() - returns wrapper class data type
+
+-> why do we need wrapper classes?
+✅ Collections in Java store only objects, not primitive types.
+✅ So, to store primitives like int, double, etc., in collections, we use wrapper classes like Integer, Double, etc.
+✅ These wrapper classes convert primitives into objects, making them compatible with collections.
+
+-> convert primitive data type to wrapper class and vice versa
+int i = 10;
+Integer i1 = Integer.valueOf(i);
+Integer i1 = i;
+
+Integer i2 = Integer.valueOf(12);
+int i = i2.intValue();
+int i = i2;
+
+-> int – Primitive Data Type
+Definition: int is one of Java’s eight primitive data types.
+Memory Efficient: Since it's not an object, it uses less memory and is faster.
+No Methods: You can't call methods on an int.
+Cannot be null: It always holds a value; default is 0.
+
+Integer – Wrapper Class
+Definition: Integer is a class in java.lang that wraps an int value into an object.
+Object-Oriented: It allows int values to be used where objects are required (e.g., in collections).
+Has Methods: Provides useful methods like parseInt(), compare(), toString(), etc.
+Can be null: Useful when you need to represent the absence of a value.
+Autoboxing/Unboxing: Java automatically converts between int and Integer.
+
+-> Type casting in java means manually converting one data type into another data type especially when converting from larger data type to smaller type.
+targetType variable = (targetType) value;
+
+double d = 12.3;
+int i = (int) d;
+sop(i);
+
+-> Upcasting is the process of converting subclass to  super class. It is automatc
+Dog d = new Dog();
+Animal a =d;
+restrictions :
+we can only call inherited functions or overriden functions in child class. We cannot call child class methods
+
+-> Downcasting is the process of converting a super class to subclass. It is not automatic must be done explicitly
+downcasting possible only after upcasting
+Animal a = new Dog();//upcasting
+Dog d =(dog) a;
+
+-> What is a Static Block in Java?
+A static block in Java is a block of code that runs once when the class is loaded into memory, before any object is created or any static method is called.
+
+-> Can we override/overload static method?
+Yes we can overload static methods in the same class.
+But we cannot override static methods because they belong to class not ot instances. Method overriding works with instance methods and runtime polymorphism, which static methods do not support.
+
+-> Can we make constructor as static?
+Constructors are used to create objects, and they are called when an object is instantiated.
+Static belongs to the class, not to any object.
+Since constructors are meant to initialize instances, making them static (which means no instance) doesn’t make sense.
+
+-> instance word refers to specific object created from that class
+
+-> Java naming conventions
+class names - PascalCase (also known as UpperCamelCase) RockIsOnHill
+methods - use camelCase calculateTotal()
+variable names - use camelCase totalBill
+constant names - use UPPER_ CASE with underscores
+packages - use lowercase(words are seperated by dots)
+
+-> Exception is an event that occurs during execution of a program at runtime and causes execution to halt. Exception occurs when user ants to do something that the program doesn't support. Exception can be handled in the program ahead of time preventing execution from stopping.
+
+	checked exceptions
+	These are exceptions that are checked at compile-time.
+	The compiler ensures that the program handles these exceptions using try-catch or throws.
+	
+	IOException
+	SQLException
+	FileNotFoundException
+	
+	unchecked exceptions
+	These are exceptions that occur at runtime and are not checked at compile-time.
+	They are subclasses of RuntimeException.
+
+	NullPointerException
+	ArrayIndexOutOfBoundsException
+	ArithmeticException
+
+	errors
+	These are serious problems that applications should not try to catch.
+	They are not meant to be handled by the program.
+	
+	OutOfMemoryError
+	StackOverflowError
+	VirtualMachineError
+
+-> Try, catch, finally block?
+try-catch-finally block is used to handle exceptions gracefully and ensure that important code is executed regardless of whether an exception occurs.
+
+try Block
+Contains code that might throw an exception.
+If an exception occurs, control is transferred to the catch block.
+
+catch Block
+Handles the exception thrown in the try block.
+You can have multiple catch blocks for different exception types.
+
+finally Block
+Always executes after the try and catch blocks.
+Used for cleanup activities like closing files, releasing resources, etc.
+Executes even if an exception is not thrown or if a return statement is used.
+
+finally block may skipped when System.exit(0) is called, JVM crash etc:-
+
+-> throw vs throws
+In Java, throw and throws are two distinct keywords used for exception handling, but they serve different purposes. Here's a clear and structured explanation:
+throw : Used to explicitly throw an exception from a method or block of code.
+Followed By: An instance of an exception (object).
+public class ThrowExample {
+    public static void main(String[] args) {
+        int age = 15;
+        if (age < 18) {
+            throw new IllegalArgumentException("Age must be 18 or older");
+        }
+        System.out.println("Access granted");
+    }
+}
+
+class AgeTooLowException extends Exception {
+    public AgeTooLowException(String message) {
+        super(message);
+    }
+}
+
+public class CustomExceptionDemo {
+    public static void main(String[] args) throws AgeTooLowException {
+        int age = 15;
+        if (age < 18) {
+            throw new AgeTooLowException("Age must be 18 or older");
+        }
+    }
+}
+
+
+
+throws : Used in a method signature to declare that the method might throw one or more exceptions.
+Followed By: Exception class names.
+import java.io.*;
+
+public class ThrowsExample {
+    public static void main(String[] args) {
+        try {
+            readFile("example.txt");
+        } catch (IOException e) {
+            System.out.println("Caught IOException: " + e.getMessage());
+        }
+    }
+
+    // Method declares it might throw IOException
+    public static void readFile(String fileName) throws IOException {
+        FileReader file = new FileReader(fileName);
+        BufferedReader reader = new BufferedReader(file);
+        System.out.println(reader.readLine());
+        reader.close();
+    }
+}
+---------------------------------------------------
+The String class in Java is a part of the java.lang package and is used to create immutable sequences of characters. Strings are objects in Java, and the class provides various methods for operations like comparison, searching, modification, and conversion.
+-----------------------------------------------------
+Why String is immutable in Java?
+Java strings are immutable to make sure memory is used efficiently. Strings in Java that are specified as immutable as the content is shared storage in a single pool to minimize creating a copy of the same value
+
+Security
+Synchronization
+Being immutable automatically makes the String thread safe since they won’t be changed when accessed from multiple threads.
+
+-------------------------------------------------------------
+String.format()
+Used to create formatted strings, similar to printf.
+String.format() is a method used to create formatted strings by embedding variables or values into a string template
+String name = "Alice";
+int age = 25;
+String result = String.format("Name: %s, Age: %d", name, age);
+System.out.println(result); // Name: Alice, Age: 25
+-------------------------------------------------------------
+String data = "apple,banana,grape";
+String[] fruits = data.split(",");
+// fruits = ["apple", "banana", "grape"]
+=------------------------------------------------------------
+String text = "Java is fun";
+String newText = text.replace("fun", "awesome");
+// Output: Java is awesome
+-------------------------------------------------------------
+String s = "hello";
+int index = s.indexOf("l"); // Output: 2
+-------------------------------------------------------------
+String s = "  hello world  ";
+String trimmed = s.trim(); // Output: "hello world"
+-------------------------------------------------------------
+compare strings
+
+1. Using .equals()
+Compares content of two strings.
+Case-sensitive.
+
+✅ 2. Using .equalsIgnoreCase()
+Compares content ignoring case.
+
+✅ 3. Using compareTo()
+Lexicographically compares two strings.
+Returns:
+0 if equal
+< 0 if first string is less
+> 0 if first string is greater
+String a = "apple";
+String b = "banana";
+System.out.println(a.compareTo(b)); // negative value
+
+✅ 4. Using ==
+Compares references, not content.
+Only returns true if both strings point to the same object.
+-------------------------------------------------------
+BufferedReader vs BufferedWriter ?
+BufferedReader and BufferedWriter are Java classes used for reading and writing text efficiently. They use internal buffers to reduce the number of I/O operations, which improves performance when dealing with large amounts of data.
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class BufferedReaderExample {
+    public static void main(String[] args) {
+        String filePath = "input.txt"; // Make sure this file exists
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            System.out.println("Reading from file:");
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line); // Print each line
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+            e.printStackTrace();
+        }
+    }
+}
+
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class BufferedWriterExample {
+    public static void main(String[] args) {
+        String filePath = "output.txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            writer.write("Hello, world!");
+            writer.newLine(); // Adds a new line
+            writer.write("This is written using BufferedWriter.");
+            writer.newLine();
+            writer.write("BufferedWriter is efficient for writing text.");
+            System.out.println("Data written to file successfully.");
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file.");
+            e.printStackTrace();
+        }
+    }
+}
+------------------------------------------------------
+3.	InputStream vs OutputStream?
+------------------------------------------------------
+Collection (Interface)
+Type: Interface
+Package: java.util
+Purpose: Represents a group of objects, known as elements.
+Super Interface: It is the root interface in the collection hierarchy.
+Common Subinterfaces:
+List (e.g., ArrayList, LinkedList)
+Set (e.g., HashSet, TreeSet)
+Queue (e.g., PriorityQueue, LinkedList)
+Usage: You use Collection when you want to define a variable that can hold any type of collection.
+
+Collections (Utility Class)
+Type: Final class
+Package: java.util
+Purpose: Provides static utility methods for working with collections (like sorting, searching, reversing, etc.).
+Common Methods:
+Collections.sort(List)
+Collections.reverse(List)
+Collections.shuffle(List)
+Collections.max(Collection)
+Collections.min(Collection)
+
+List	add(), remove(), get(), contains(), size()
+Set	add(), remove(), contains(), size()
+Queue	offer(), poll(), peek(), add()
+Map	put(), get(), remove(), containsKey(), keySet(), values()
+
+
+Use HashMap when:
+
+You need fast access
+You don’t care about order
+You may need to store a null key
+Use TreeMap when:
+
+You need sorted keys
+You want to use a custom comparator
+You don’t need null keys
+
+Use HashSet when you care about performance and don’t need order.
+Use TreeSet when you need sorted elements or want to use a custom comparator.
+------------------------------------------------------
+In Java, an enum (short for "enumeration") is a special data type that represents a fixed set of constants. It is used to define a collection of predefined values that do not change,
+Enum constants are implicitly static and final.
+
+enum Day {
+    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
+}
+
+public class EnumExample {
+    public static void main(String[] args) {
+        Day today = Day.MONDAY;
+
+        // Print the enum value
+        System.out.println("Today is: " + today);
+
+        // Use in a switch statement
+        switch (today) {
+            case MONDAY:
+                System.out.println("Start of the work week!");
+                break;
+            case FRIDAY:
+                System.out.println("Almost weekend!");
+                break;
+            default:
+                System.out.println("It's a regular day.");
+        }
+    }
+}
+
+------------------------------------------------------
+interfaces provide structure to the implement the code for child classes
+enum collection of constants
